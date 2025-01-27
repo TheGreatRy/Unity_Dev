@@ -17,4 +17,12 @@ public class DamageSource : MonoBehaviour
         }
 
     }
+    private void OnTriggerStay(Collider other)
+    {
+     
+        if (other.gameObject.TryGetComponent(out IDamagable component))
+        {
+            component.ApplyDamage(damage * Time.deltaTime);
+        }
+    }
 }
