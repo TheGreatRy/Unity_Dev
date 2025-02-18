@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] PlayerData data;
     [SerializeField] Transform view;
+    [SerializeField] Animator animator;
 
     CharacterController controller;
     InputAction moveAction;
     InputAction jumpAction;
     InputAction sprintAction;
     InputAction attackAction;
-    Animator animator;
 
     Vector2 movementInput = Vector2.zero;
     Vector3 velocity = Vector3.zero;
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
+        animator = GetComponent<Animator>();
     }
 
     void Update()

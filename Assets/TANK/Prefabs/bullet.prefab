@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8747086598221844207}
   - component: {fileID: 1540550578416971642}
+  - component: {fileID: 8943461541532071597}
   - component: {fileID: 2824327642351551929}
   - component: {fileID: 5136278168707720549}
   - component: {fileID: 3915836417900400775}
   - component: {fileID: 8154202823961391752}
-  - component: {fileID: 4289029221487847237}
-  m_Layer: 0
+  - component: {fileID: 1043889357484192171}
+  m_Layer: 6
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +50,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16451481a1a632640885d3de0f354dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 30
+  bulletTrail: {fileID: 157586, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
+  fireSFX: {fileID: 1043889357484192171}
+--- !u!114 &8943461541532071597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183140699027286714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2568daef4f32a04b8f8ac29d6901e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  destroyOnHit: 1
+  damageableLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  hitFxPrefab: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
+  damageRate: 10
 --- !u!33 &2824327642351551929
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -118,7 +140,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -151,7 +173,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!82 &4289029221487847237
+--- !u!82 &1043889357484192171
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

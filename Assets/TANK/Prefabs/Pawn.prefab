@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1576452359595192, guid: 3a156a33c79555c42ac3f902b2499cac, type: 3}
       propertyPath: m_Name
-      value: SM_Pawn_Cover_Female_01 Variant
+      value: Pawn
       objectReference: {fileID: 0}
     - target: {fileID: 4238421629494856, guid: 3a156a33c79555c42ac3f902b2499cac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,6 +65,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1576452359595192, guid: 3a156a33c79555c42ac3f902b2499cac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7631352175519622390}
+    - targetCorrespondingSourceObject: {fileID: 1576452359595192, guid: 3a156a33c79555c42ac3f902b2499cac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1488682289371346959}
   m_SourcePrefab: {fileID: 100100000, guid: 3a156a33c79555c42ac3f902b2499cac, type: 3}
 --- !u!1 &7499410680556978542 stripped
 GameObject:
@@ -84,7 +87,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  destroyFX: {fileID: 1804206099813350, guid: 5ed0a013702bd9f42847584f2fba7b21, type: 3}
+  maxHealth: 100
+  destroyFxPrefab: {fileID: 0}
+  OnDestroyed: {fileID: 0}
+  OnScore: {fileID: 0}
+  scoreData: {fileID: 0}
 --- !u!54 &4934440684131807309
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,3 +141,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: b6186bf1814e0bb4aac9b04c0d5c07db, type: 3}
+--- !u!114 &-1488682289371346959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499410680556978542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2568daef4f32a04b8f8ac29d6901e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  destroyOnHit: 1
+  damageableLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  hitFxPrefab: {fileID: 0}
+  damageRate: 0.1

@@ -21,9 +21,10 @@ public class PlayerTank : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    { 
         rb = GetComponent<Rigidbody>();
         destructable = GetComponent<Destructable>();
+        healthSlider.maxValue = destructable.MaxHealth;
     }
 
     // Update is called once per frame
@@ -35,11 +36,14 @@ public class PlayerTank : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && ammo > 0)
         {
             ammo--;
-            Instantiate(rocket, barrel.position + Vector3.up, barrel.rotation);
+            Instantiate(rocket, barrel.position, barrel.rotation);
         }
-        ammoText.text = "Ammo: " + ammo.ToString();
+        ammoText.text = "Ammo: " + ammo.ToString() + " Health Temp: " + destructable.Health.ToString();
 
-        healthSlider.value = destructable.Health;
+        PlayerPrefs.SetFloat("PlayerHealth", destructable.Health);
+        PlayerPrefs.Save();
+        healthSlider.value = PlayerPrefs.GetFloat("PlayerHealth");
+
         if (destructable.Health <= 0)
         {
             GameManager.Instance.SetGameOver();
@@ -50,6 +54,14 @@ public class PlayerTank : MonoBehaviour
     {
         rb.AddRelativeForce(Vector3.forward * force);
         rb.AddRelativeTorque(Vector3.up * torque);
+    }
+    public void OnHealthUpdate(float healthPoints)
+    {
+        destructable.HealHealth(healthPoints);
+        PlayerPrefs.SetFloat("PlayerHealth", destructable.Health);
+        PlayerPrefs.Save();
+        healthSlider.value = PlayerPrefs.GetFloat("PlayerHealth");
+
     }
 
 }

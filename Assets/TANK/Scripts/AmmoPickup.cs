@@ -5,7 +5,7 @@ public class AmmoPickup: MonoBehaviour
 {
     [SerializeField] int ammoCount = 5;
     [SerializeField] GameObject pickupFX;
-    
+
     private void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag("Player"))
