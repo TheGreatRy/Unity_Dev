@@ -8,6 +8,7 @@ public class PlayerTank : MonoBehaviour
     public int ammo = 10;
     [SerializeField] float maxTorque = 90; 
     [SerializeField] float maxForce = 1;
+    [SerializeField] float shootDelayMax = 2;
     [SerializeField] GameObject rocket;
     [SerializeField] Transform barrel;
     [SerializeField] TMP_Text ammoText;
@@ -15,6 +16,7 @@ public class PlayerTank : MonoBehaviour
 
     float torque;
     float force;
+    float timerDelay;
 
     Rigidbody rb;
     Destructable destructable;
@@ -25,18 +27,21 @@ public class PlayerTank : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         destructable = GetComponent<Destructable>();
         healthSlider.maxValue = destructable.MaxHealth;
+        timerDelay = shootDelayMax;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timerDelay -= Time.deltaTime;
         torque = Input.GetAxis("Horizontal") * maxTorque;
         force = Input.GetAxis("Vertical") * maxForce;
 
-        if (Input.GetMouseButtonDown(0) && ammo > 0)
+        if (Input.GetMouseButtonDown(0) && ammo > 0 && timerDelay <= 0)
         {
             ammo--;
             Instantiate(rocket, barrel.position, barrel.rotation);
+            timerDelay = shootDelayMax;
         }
         ammoText.text = "Ammo: " + ammo.ToString() + " Health Temp: " + destructable.Health.ToString();
 

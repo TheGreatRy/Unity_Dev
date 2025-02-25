@@ -69,7 +69,7 @@ MonoBehaviour:
   destroyOnHit: 1
   damageableLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 200
   hitFxPrefab: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   damageRate: 10
 --- !u!33 &2824327642351551929

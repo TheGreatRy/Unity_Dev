@@ -15,13 +15,16 @@ public class Turrent : MonoBehaviour
     float spawnTimer;
      void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         spawnTimer = spawnTime;
     }
+    
 
     // Update is called once per frame
     void Update()
     {
+        
+
         if (Time.time >= spawnTimer)
         {
             spawnTimer = Time.time + spawnTime;
@@ -30,7 +33,8 @@ public class Turrent : MonoBehaviour
         }
         if (player.tag == "Player")
         {
-            transform.LookAt(player.transform.position);
+            transform.LookAt(player.GetComponentInChildren<Rigidbody>().transform.position, Vector3.up);
+            barrel.LookAt(player.transform, Vector3.up);
         }
         
     }
@@ -38,7 +42,7 @@ public class Turrent : MonoBehaviour
     {
         if (tag == "PurpleEnemy")
         {
-            rb.AddRelativeForce(Vector3.forward * maxForce);
+            rb.AddForce(Vector3.forward * maxForce);
         }
     }
 }

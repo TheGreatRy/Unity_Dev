@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerData data;
     [SerializeField] Transform view;
     [SerializeField] Animator animator;
+    [SerializeField] StringEvent loadLevelEvent;
 
     CharacterController controller;
     InputAction moveAction;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     Vector2 movementInput = Vector2.zero;
     Vector3 velocity = Vector3.zero;
     bool isSprinting = false;
+    public Transform View { get => view; set => view = value; }
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -99,6 +101,11 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", new Vector3(velocity.x, 0, velocity.z).magnitude);
         animator.SetFloat("AirSpeed", controller.velocity.y);
         animator.SetBool("OnGround", onGround);
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            loadLevelEvent?.RaiseEvent("Character");
+        }
     }
     public void OnMove(InputAction.CallbackContext ctx)
     {

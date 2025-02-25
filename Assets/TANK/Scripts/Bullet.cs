@@ -20,4 +20,8 @@ public class Bullet : MonoBehaviour
     {
         bulletTrail.transform.position = transform.position;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
 }

@@ -4,6 +4,8 @@ public class NewGameManager : Singleton<NewGameManager>
 {
     [SerializeField] Event OnDestroyEvent;
     [SerializeField] IntEvent OnScoreEvent;
+    [SerializeField] BoolEvent OnPauseEvent;
+    [SerializeField] IntData scoreData;
 
     int score = 0;
     int highscore = 0;
@@ -16,6 +18,13 @@ public class NewGameManager : Singleton<NewGameManager>
         score = 0;
         highscore = PlayerPrefs.GetInt("highscore", 0);
         print("Highscore: " + highscore);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            OnPauseEvent?.RaiseEvent(true);
+        }
     }
     public void OnDestroyed()
     {

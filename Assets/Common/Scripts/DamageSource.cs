@@ -22,6 +22,7 @@ public class DamageSource : MonoBehaviour
 	// Handle collision-based damage
 	private void OnCollisionEnter(Collision collision)
 	{
+		
 		// Early exit if target is not on a damageable layer
 		if (!OnDamageLayer(collision.gameObject)) return;
 
@@ -42,20 +43,20 @@ public class DamageSource : MonoBehaviour
 
 			// Spawn hit effect if one is set
 			if (hitFxPrefab != null) Instantiate(hitFxPrefab, damageInfo.hitPoint, Quaternion.identity);
-
-			// Destroy this object if configured to do so
-			if (destroyOnHit)
-			{
-				Destroy(gameObject);
-			}
 		}
-	}
+        // Destroy this object if configured to do so
+        if (destroyOnHit)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 	// Handle initial trigger-based damage
 	private void OnTriggerEnter(Collider other)
 	{
-		// Early exit if target is not on a damageable layer
-		if (!OnDamageLayer(other.gameObject)) return;
+        
+        // Early exit if target is not on a damageable layer
+        if (!OnDamageLayer(other.gameObject)) return;
 
 		// Try to get the damageable component from the hit object
 		if (other.gameObject.TryGetComponent(out IDamagable component))
@@ -75,15 +76,14 @@ public class DamageSource : MonoBehaviour
 			// Spawn hit effect if one is set
 			if (hitFxPrefab != null) Instantiate(hitFxPrefab, damageInfo.hitPoint, Quaternion.identity);
 
-			// Destroy this object if configured to do so
-			if (destroyOnHit)
-			{
-				Destroy(gameObject);
-			}
-
 			lastDamageTime = Time.time;
 		}
-	}
+        // Destroy this object if configured to do so
+        if (destroyOnHit)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 	// Handle continuous trigger-based damage
 	private void OnTriggerStay(Collider other)
