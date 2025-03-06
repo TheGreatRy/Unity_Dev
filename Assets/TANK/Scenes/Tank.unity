@@ -3420,7 +3420,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!1 &521149246 stripped
@@ -4558,7 +4557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &690178972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5700,7 +5699,7 @@ PrefabInstance:
       objectReference: {fileID: 1306709618}
     - target: {fileID: 369100883964814880, guid: 59b9ec0b2ecef734ba010a6eda028329, type: 3}
       propertyPath: spawnTime
-      value: 2
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 4270869239615738421, guid: 59b9ec0b2ecef734ba010a6eda028329, type: 3}
       propertyPath: m_Name
@@ -6065,7 +6064,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!1 &944020909 stripped
@@ -6583,12 +6581,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleUI: {fileID: 927569407}
   gameOverlay: {fileID: 1688486621}
+  loseDisplay: {fileID: 236390197}
+  winDisplay: {fileID: 336848436}
   scoreText: {fileID: 690178973}
   introText: {fileID: 1850786222}
   enemiesLeft: {fileID: 2040861134}
   OnDestroyEvent: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
   OnScoreEvent: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
-  OnEnemyDeathEvent: {fileID: 11400000, guid: 73dc224ed0705a248977033ce00bc073, type: 2}
   objectsWithSFX:
   - {fileID: 183140699027286714, guid: 42fbc5f4037371c4a84e1c945462ff39, type: 3}
   - {fileID: 1688486621}
@@ -7084,7 +7083,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!1001 &1075422005
@@ -7736,7 +7734,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!1001 &1169913137
@@ -7797,7 +7794,7 @@ PrefabInstance:
       objectReference: {fileID: 1306709618}
     - target: {fileID: 6008031278369576988, guid: 0cd21e55ffbb4764c95ae422474c68ad, type: 3}
       propertyPath: spawnTime
-      value: 2
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 7870800264990993417, guid: 0cd21e55ffbb4764c95ae422474c68ad, type: 3}
       propertyPath: m_Name
@@ -8533,7 +8530,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!1 &1324858382 stripped
@@ -9497,7 +9493,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!1 &1495108594 stripped
@@ -11004,7 +10999,7 @@ PrefabInstance:
       objectReference: {fileID: 1306709618}
     - target: {fileID: 369100883964814880, guid: 59b9ec0b2ecef734ba010a6eda028329, type: 3}
       propertyPath: spawnTime
-      value: 2
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 4270869239615738421, guid: 59b9ec0b2ecef734ba010a6eda028329, type: 3}
       propertyPath: m_Name
@@ -11370,7 +11365,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -11997,7 +11992,7 @@ PrefabInstance:
       objectReference: {fileID: 1306709618}
     - target: {fileID: 6008031278369576988, guid: 0cd21e55ffbb4764c95ae422474c68ad, type: 3}
       propertyPath: spawnTime
-      value: 2
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 7870800264990993417, guid: 0cd21e55ffbb4764c95ae422474c68ad, type: 3}
       propertyPath: m_Name
@@ -13796,7 +13791,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!4 &1962691252 stripped
@@ -14495,7 +14489,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!1 &2040315463 stripped
@@ -14897,7 +14890,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!1001 &2071319045
@@ -15059,7 +15051,6 @@ MonoBehaviour:
   maxHealth: 3
   destroyFxPrefab: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
-  OnEnemyDeath: {fileID: 0}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!1001 &2079489028

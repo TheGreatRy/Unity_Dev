@@ -211,6 +211,7 @@ MonoBehaviour:
   maxHealth: 5
   destroyFxPrefab: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
+  OnEnemyDeath: {fileID: 11400000, guid: 73dc224ed0705a248977033ce00bc073, type: 2}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!33 &7002693783826957221

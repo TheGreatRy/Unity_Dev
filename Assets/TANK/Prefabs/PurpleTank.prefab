@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 106555401446578882, guid: 0cd21e55ffbb4764c95ae422474c68ad, type: 3}
+      propertyPath: OnEnemyDeath
+      value: 
+      objectReference: {fileID: 11400000, guid: 73dc224ed0705a248977033ce00bc073, type: 2}
     - target: {fileID: 4130721868594009466, guid: 0cd21e55ffbb4764c95ae422474c68ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

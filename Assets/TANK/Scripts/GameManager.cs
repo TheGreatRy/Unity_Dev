@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Event OnDestroyEvent;
     [SerializeField] IntEvent OnScoreEvent;
-    [SerializeField] Event OnEnemyDeathEvent;
+    //[SerializeField] Event OnEnemyDeathEvent;
     [SerializeField] GameObject[] objectsWithSFX;
     [SerializeField] GameObject enemyContainer;
 
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         gameOverlay.SetActive(false);
         OnDestroyEvent.Subscribe(OnDestroyed);
         OnScoreEvent.Subscribe(OnScore);
-        OnEnemyDeathEvent.Subscribe(OnEnemyDeath);
+        //OnEnemyDeathEvent.Subscribe(OnEnemyDeath);
 
         currentEnemies = enemyContainer.GetComponentsInChildren<Turrent>();
         enemyTotal = currentEnemies.Length;
@@ -82,8 +82,6 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-
-
     }
 
 

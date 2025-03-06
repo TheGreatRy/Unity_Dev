@@ -44,7 +44,7 @@ public class PlayerTank : MonoBehaviour
             Instantiate(rocket, barrel.position, barrel.rotation);
             timerDelay = shootDelayMax;
         }
-        ammoText.text = "Ammo: " + ammo.ToString() + " Health Temp: " + destructable.Health.ToString();
+        ammoText.text = "Ammo: " + ammo.ToString();
 
         PlayerPrefs.SetFloat("PlayerHealth", destructable.Health);
         PlayerPrefs.Save();
