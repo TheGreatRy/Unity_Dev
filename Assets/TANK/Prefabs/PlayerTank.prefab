@@ -59,6 +59,7 @@ MonoBehaviour:
   maxForce: 20
   shootDelayMax: 1
   rocket: {fileID: 183140699027286714, guid: 42fbc5f4037371c4a84e1c945462ff39, type: 3}
+  playerModel: {fileID: 3362053914298437160}
   barrel: {fileID: 3629986290710364619}
   ammoText: {fileID: 0}
   healthSlider: {fileID: 0}
@@ -74,10 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db618d1ba46bc1b47b418059d079ab24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
   maxHealth: 20
   destroyFxPrefab: {fileID: 1804206099813350, guid: 5ed0a013702bd9f42847584f2fba7b21, type: 3}
   OnDestroyed: {fileID: 11400000, guid: bbc3bb6fab1746842bb5b5f6ea3795b2, type: 2}
+  OnEnemyDeath: {fileID: 11400000, guid: 73dc224ed0705a248977033ce00bc073, type: 2}
   OnScore: {fileID: 11400000, guid: 37d6030b25a8dc84b9ecfeec483315d4, type: 2}
   scoreData: {fileID: 11400000, guid: 22b99e3231af93047b6260521505a6db, type: 2}
 --- !u!33 &2499174387400408446
@@ -636,6 +638,14 @@ PrefabInstance:
     - target: {fileID: 3393395878847182846, guid: 42ffa74f54a3b5f469196958719230b9, type: 3}
       propertyPath: m_Name
       value: tank-body
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393395878847182846, guid: 42ffa74f54a3b5f469196958719230b9, type: 3}
+      propertyPath: m_TagString
+      value: PlayerModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393395879618648572, guid: 42ffa74f54a3b5f469196958719230b9, type: 3}
+      propertyPath: m_TagString
+      value: PlayerModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

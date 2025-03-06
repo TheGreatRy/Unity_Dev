@@ -10,6 +10,7 @@ public class PlayerTank : MonoBehaviour
     [SerializeField] float maxForce = 1;
     [SerializeField] float shootDelayMax = 2;
     [SerializeField] GameObject rocket;
+    [SerializeField] GameObject playerModel;
     [SerializeField] Transform barrel;
     [SerializeField] TMP_Text ammoText;
     [SerializeField] Slider healthSlider;
@@ -51,6 +52,7 @@ public class PlayerTank : MonoBehaviour
 
         if (destructable.Health <= 0)
         {
+            Destroy(playerModel);
             GameManager.Instance.SetGameOver();
         }
         

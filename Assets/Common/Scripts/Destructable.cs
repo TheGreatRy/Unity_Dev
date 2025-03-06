@@ -9,6 +9,7 @@ public class Destructable : MonoBehaviour, IDamagable
 	[SerializeField] float maxHealth = 100;			// Maximum possible health
 	[SerializeField] GameObject destroyFxPrefab;	// Visual effect spawned on destruction
 	[SerializeField] Event OnDestroyed;				// Event to call on destruction
+	[SerializeField] Event OnEnemyDeath;				// Event to call on destruction
 	[SerializeField] IntEvent OnScore;				// Event to get score
 	[SerializeField] IntData scoreData;             // score data
 
@@ -40,12 +41,16 @@ public class Destructable : MonoBehaviour, IDamagable
 				OnDestroyed.RaiseEvent();
 				OnScore.RaiseEvent(100);
 				scoreData.Value += 100;
-			}
-			
-			// Spawn destruction effect if one is set
-			if (destroyFxPrefab != null) Instantiate(destroyFxPrefab, transform.position, Quaternion.identity);
-			// Destroy this game object
-			Destroy(gameObject);
+
+				// Spawn destruction effect if one is set
+				if (destroyFxPrefab != null) Instantiate(destroyFxPrefab, transform.position, Quaternion.identity);
+				Destroy(gameObject);
+
+				if (gameObject.GetComponent<Turrent>())
+				{
+					OnEnemyDeath.RaiseEvent();
+				}
+			}	
 		}
 	}
 	public void HealHealth(float add)

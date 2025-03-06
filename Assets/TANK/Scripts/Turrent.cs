@@ -15,7 +15,7 @@ public class Turrent : MonoBehaviour
     float spawnTimer;
      void Start()
     {
-        rb = GetComponentInChildren<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         spawnTimer = spawnTime;
     }
     
@@ -36,13 +36,10 @@ public class Turrent : MonoBehaviour
             transform.LookAt(player.GetComponentInChildren<Rigidbody>().transform.position, Vector3.up);
             barrel.LookAt(player.transform, Vector3.up);
         }
-        
-    }
-    private void FixedUpdate()
-    {
         if (tag == "PurpleEnemy")
         {
-            rb.AddForce(Vector3.forward * maxForce);
+            rb.AddRelativeForce(Vector3.forward * maxForce);
         }
+
     }
 }

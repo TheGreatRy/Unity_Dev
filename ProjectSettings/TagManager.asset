@@ -7,6 +7,10 @@ TagManager:
   - Score
   - PurpleEnemy
   - GreenEnemy
+  - Waypoint
+  - FxTemporaire
+  - PlayerModel
+  - DestroyableObject
   layers:
   - Default
   - TransparentFX
