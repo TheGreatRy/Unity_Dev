@@ -38,7 +38,7 @@ public class PlayerTank : MonoBehaviour
         torque = Input.GetAxis("Horizontal") * maxTorque;
         force = Input.GetAxis("Vertical") * maxForce;
 
-        if (Input.GetMouseButtonDown(0) && ammo > 0 && timerDelay <= 0)
+        if (Input.GetMouseButtonDown(0) && ammo > 0 && timerDelay <= 0 && GameManager.Instance.IsInGame())
         {
             ammo--;
             Instantiate(rocket, barrel.position, barrel.rotation);

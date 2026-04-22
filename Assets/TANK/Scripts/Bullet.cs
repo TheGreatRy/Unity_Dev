@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float force = 10;
+    public float force = 50;
     [SerializeField] GameObject bulletTrail;
     [SerializeField] AudioSource fireSFX;
 

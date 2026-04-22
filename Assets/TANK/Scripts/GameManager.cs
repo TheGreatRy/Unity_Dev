@@ -13,13 +13,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOverlay;
     [SerializeField] GameObject loseDisplay;
     [SerializeField] GameObject winDisplay;
+    [SerializeField] GameObject pauseDisplay;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text introText;
     [SerializeField] TMP_Text enemiesLeft;
 
-    [SerializeField] Event OnDestroyEvent;
+    [SerializeField] Event OnUIUpdateEvent;
     [SerializeField] IntEvent OnScoreEvent;
-    //[SerializeField] Event OnEnemyDeathEvent;
     [SerializeField] GameObject[] objectsWithSFX;
     [SerializeField] GameObject enemyContainer;
 
@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
         TITLE,
         GAME,
         WIN,
-        LOSE
+        LOSE,
+        PAUSE
     }
 
     eState state = eState.TITLE;
@@ -45,39 +46,48 @@ public class GameManager : MonoBehaviour
 
         score = 0;
         gameOverlay.SetActive(false);
-        OnDestroyEvent.Subscribe(OnDestroyed);
         OnScoreEvent.Subscribe(OnScore);
-        //OnEnemyDeathEvent.Subscribe(OnEnemyDeath);
+        OnUIUpdateEvent.Subscribe(OnUIUpdate); 
 
         currentEnemies = enemyContainer.GetComponentsInChildren<Turrent>();
         enemyTotal = currentEnemies.Length;
-
-        foreach (GameObject gameObject in objectsWithSFX)
-        {
-            if (gameObject.GetComponent<AudioSource>() != null)
-            {
-                gameObject.GetComponent<AudioSource>().mute = true;
-            }
-        }
+        MainGameSFX(true);
     }
     void Update()
     {
+    
         switch (state)
         {
             case eState.TITLE:
                 titleUI.SetActive(true);
                 break;
             case eState.GAME:
+                titleUI.SetActive(false);
+                pauseDisplay.SetActive(false);
                 gameOverlay.SetActive(true);
+                MainGameSFX(false);
                 StartCoroutine(InstructionDelay(5f));
+                OnUIUpdateEvent.RaiseEvent();
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    state = eState.PAUSE;
+                }
                 break;
             case eState.WIN:
                 gameOverlay.SetActive(false);
                 winDisplay.SetActive(true);
+                MainGameSFX(true);
                 break;
             case eState.LOSE:
                 gameOverlay.SetActive(false);
                 loseDisplay.SetActive(true);
+                MainGameSFX(true);
+                break;
+            case eState.PAUSE:
+                Time.timeScale = 0;
+                gameOverlay.SetActive(false);
+                pauseDisplay.SetActive(true);
+                MainGameSFX(true);
                 break;
             default:
                 break;
@@ -88,14 +98,22 @@ public class GameManager : MonoBehaviour
     public void StartButton_clicked()
     {
         titleUI.SetActive(false);
+        titleUI.GetComponent<AudioSource>().mute = true;
+        MainGameSFX(false);
+
         state = eState.GAME;
-        foreach (GameObject gameObject in objectsWithSFX)
-        {
-            if (gameObject.GetComponent<AudioSource>() != null)
-            {
-                gameObject.GetComponent<AudioSource>().mute = false;
-            }
-        }
+    }
+
+    public void ResumeButton_clicked()
+    {
+        gameOverlay.GetComponent<AudioSource>().mute = false;
+        Time.timeScale = 1;
+        state = eState.GAME;
+    }
+    public void QuitButton_clicked()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;    
     }
     public void SetGameOver()
     {
@@ -103,31 +121,43 @@ public class GameManager : MonoBehaviour
         {
             Destroy(enemy);
         }
+        
         state = eState.LOSE;
     }
-
-    public void OnDestroyed()
+    
+    public void OnScore(int score)
     {
+        this.score += score;
+        scoreText.text = "Score: " + this.score.ToString();
+    }
+    public void OnUIUpdate()
+    {
+        currentEnemies = enemyContainer.GetComponentsInChildren<Turrent>();
+        enemiesLeft.text = "Enemies Left: " + currentEnemies.Length.ToString() + "/" + enemyTotal.ToString();
+
         if (currentEnemies.Length == 0)
         {
             state = eState.WIN;
         }
     }
-    public void OnScore(int score)
-    {
-        this.score += score;
-        scoreText.text = "Score: " + score.ToString();
-        print(score);
-    }
-    public void OnEnemyDeath()
-    {
-        currentEnemies = enemyContainer.GetComponentsInChildren<Turrent>();
-        enemiesLeft.text = "Enemies Left: " + currentEnemies.Length.ToString() + "/" + enemyTotal.ToString();
-    }
     IEnumerator InstructionDelay(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         introText.gameObject.SetActive(false);
+    }
+    private void MainGameSFX(bool isMuted)
+    {
+        foreach (GameObject gameObject in objectsWithSFX)
+        {
+            if (gameObject.GetComponent<AudioSource>() != null)
+            {
+                gameObject.GetComponent<AudioSource>().mute = isMuted;
+            }
+        }
+    }
+    public bool IsInGame()
+    {
+        return state == eState.GAME;
     }
 }
 

@@ -11,6 +11,8 @@ public class PoolBall : MonoBehaviour, IPoolable<GameObject>
 
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddForce(Random.insideUnitSphere * 10, ForceMode.VelocityChange);
+
+
     }
 
     public void OnDespawn()
@@ -23,5 +25,6 @@ public class PoolBall : MonoBehaviour, IPoolable<GameObject>
     {
         yield return new WaitForSeconds(waitTime);
         Pool.Release(gameObject);
+        Destroy(gameObject);
     }
 }
